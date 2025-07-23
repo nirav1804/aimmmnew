@@ -2,8 +2,16 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 def run_meridian_model(df, media_cols, target):
+    # Clean and prepare data
+    df = df.copy()
+    df = df[media_cols + [target]]
+    df = df.apply(pd.to_numeric, errors='coerce')  # convert non-numeric to NaN
+    df = df.dropna()  # drop rows with NaN
+
     X = df[media_cols]
     y = df[target]
+
+    # Fit linear regression
     model = LinearRegression()
     model.fit(X, y)
 
@@ -21,7 +29,7 @@ def run_meridian_model(df, media_cols, target):
 
 def recommend_budget_allocation(results, input_value, plan_type):
     results = results.copy()
-    
+
     if plan_type == "Enter Revenue Target":
         avg_roi = results["estimated_roi"].mean()
         required_spend = input_value / avg_roi
