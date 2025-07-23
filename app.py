@@ -22,12 +22,15 @@ if uploaded_file:
     elif plan_choice == "Enter Spend Budget":
         input_value = st.number_input("💰 Enter your Total Spend Budget (₹ Crores)", min_value=0.0, step=0.5)
 
-    expected_media_cols = [
-        "TV Spend", "Print Spend", "Outdoor Spend", "Cinema Spend",
-        "YouTube Spend", "FacebookAds Spend", "GoogleAds Spend", "Programmatic Spend",
-        "RegionalPrint Spend", "RegionalOutdoor Spend", "RegionalDigital Spend",
-        "RegionalRadio Spend", "GroundActivation Spend"
-    ]
+expected_media_cols = [
+    "Affiliate_Spend", "AppleSearchAds_spend", "Contentnative_spend", "Coupon_spend",
+    "DisplayBanner_spend", "DisplayVideo_spend", "DV360_spend", "FacebookAds_spend",
+    "GoogleAds_spend", "IGPg_spend", "Influencer_spend", "JioAdPerformance_spend",
+    "Outdoor_spend", "Performance_spend", "Print_spend", "Programmatic_spend",
+    "Radio_spend", "ROIHunter_spend", "RTB_spend", "SEO_spend", "Snapchat_spend",
+    "StarGreetz_spend", "TV_spend", "TwitterPerformance_spend"
+]
+
 
     media_cols = [col for col in expected_media_cols if col in df.columns]
     target = "revenue"
